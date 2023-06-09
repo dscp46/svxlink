@@ -90,7 +90,8 @@ set(LIBSRC AsyncAudioSource.cpp AsyncAudioSink.cpp
            AsyncAudioInterpolator.cpp AsyncAudioDecoder.cpp
            AsyncAudioEncoder.cpp AsyncAudioEncoderS16.cpp
            AsyncAudioDecoderS16.cpp AsyncAudioEncoderGsm.cpp
-           AsyncAudioDecoderGsm.cpp AsyncAudioRecorder.cpp
+           AsyncAudioDecoderGsm.cpp AsyncAudioEncoderAlaw.cpp
+           AsyncAudioDecoderAlaw.cpp AsyncAudioRecorder.cpp
            AsyncAudioDeviceFactory.cpp AsyncAudioJitterFifo.cpp
            AsyncAudioDeviceUDP.cpp AsyncAudioNoiseAdder.cpp
            AsyncAudioFsf.cpp AsyncAudioContainer.cpp AsyncAudioContainerWav.cpp
