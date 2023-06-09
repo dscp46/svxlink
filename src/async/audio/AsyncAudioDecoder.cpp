@@ -49,6 +49,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  ****************************************************************************/
 
 #include "AsyncAudioDecoder.h"
+#include "AsyncAudioDecoderAlaw.h"
 #include "AsyncAudioDecoderDummy.h"
 #include "AsyncAudioDecoderNull.h"
 #include "AsyncAudioDecoderRaw.h"
@@ -123,7 +124,7 @@ using namespace Async;
 bool AudioDecoder::isAvailable(const std::string &name)
 {
   return (name == "NULL") || (name == "RAW") || (name == "S16") ||
-         (name == "GSM") ||
+         (name == "GSM") || (name == "ALAW") ||
 #ifdef SPEEX_MAJOR
          (name == "SPEEX") ||
 #endif
@@ -155,6 +156,10 @@ AudioDecoder *AudioDecoder::create(const std::string &name)
   else if (name == "GSM")
   {
     return new AudioDecoderGsm;
+  }
+  else if (name == "ALAW")
+  {
+    return new AudioDecoderAlaw;
   }
 #ifdef SPEEX_MAJOR
   else if (name == "SPEEX")
