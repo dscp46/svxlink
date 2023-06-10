@@ -126,14 +126,17 @@ AudioDecoderAlaw::~AudioDecoderAlaw(void)
 void AudioDecoderAlaw::writeEncodedSamples(void *buf, int size)
 {
   unsigned char *ptr = (unsigned char *)buf;
+  unsigned char val;
   short decoded_sample, s, m, e;
   float samples[ALAW_FRAME_SAMPLE_CNT];
   
+  
   for (int i=0; i<size && i<ALAW_FRAME_SAMPLE_CNT; ++i)
   {
-    s = (short)(ptr[i] & 0x80 >> 7);
-    e = (short)(ptr[i] & 0x70 >> 4);
-    m = (short)(ptr[i] & 0x0F);
+    val = ptr[i] ^ 0x55;
+    s = (short)(val & 0x80 >> 7);
+    e = (short)(val & 0x70 >> 4);
+    m = (short)(val & 0x0F);
     decoded_sample = ( (s==0) ? 1 :-1 ) * ( min( e, 1)<<5 + m<<1 + 1 )<<( max(e,1)+2 );
     samples[i] = static_cast<float>(decoded_sample) / 32768.0;
   }
