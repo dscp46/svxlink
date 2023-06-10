@@ -1,5 +1,5 @@
 /**
-@file	 AudioDecoderAlaw.cpp
+@file	 AsyncAudioDecoderAlaw.cpp
 @brief   An audio decoder for ITU G.711 A-law
 @author  Célestine Gramaize
 @date	 2023-06-10
